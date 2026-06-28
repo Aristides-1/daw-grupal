@@ -40,11 +40,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'usuarios',
     'clientes',
-    'mascotas',
-    'veterinarios',
+   'mascotas',
+   'veterinarios',
     'citas',
-    'atenciones',
-    'recetas',
+   'atenciones',
+   'recetas',
     'rest_framework',
     
 ]
