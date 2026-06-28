@@ -1,0 +1,19 @@
+asgiref==3.11.1
+Django==6.0.6
+djangorestframework==3.17.1
+psycopg2-binary==2.9.12
+sqlparse==0.5.5
+tzdata==2026.2
+
+# API & documentación
+django-cors-headers==4.7.0
+drf-spectacular==0.28.0
+
+# Autenticación JWT y filtros
+djangorestframework-simplejwt==5.5.1
+PyJWT==2.13.0
+django-filter==25.2
+
+# Herramientas de desarrollo
+django-extensions==3.2.3
+pydot==3.0.4

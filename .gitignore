@@ -1,0 +1,34 @@
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.env
+.venv/
+venv/
+env/
+
+# Django
+db.sqlite3
+*.log
+/staticfiles/
+/media/
+
+# Node
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Docker
+.dockerignore
+
+# Development
+CLAUDE.md
+erd.png
+.DS_Store
