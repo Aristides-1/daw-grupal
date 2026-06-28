@@ -8,3 +8,10 @@ class Rol(models.Model):
 
     def __str__(self):
         return self.nombre
+
+class Usuario(AbstractUser):
+    rol = models.ForeignKey(Rol, on_delete=models.SET_NULL, null=True, blank=True)
+    estado = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.username
