@@ -1,3 +1,7 @@
-from django.shortcuts import render
+from rest_framework import viewsets
+from .models import Atencion
+from .serializers import AtencionSerializer
 
-# Create your views here.
+class AtencionViewSet(viewsets.ModelViewSet):
+    queryset = Atencion.objects.all()
+    serializer_class = AtencionSerializer
