@@ -46,6 +46,7 @@ INSTALLED_APPS = [
    'atenciones',
    'recetas',
     'rest_framework',
+    'corsheaders',
     
 ]
 AUTH_USER_MODEL = 'usuarios.Usuario'
