@@ -51,7 +51,7 @@ INSTALLED_APPS = [
 ]
 AUTH_USER_MODEL = 'usuarios.Usuario'
 
-
+CORS_ALLOW_ALL_ORIGINS = True
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
