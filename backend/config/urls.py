@@ -12,6 +12,7 @@ from veterinarios.views import VeterinarioViewSet, EspecialidadViewSet
 from citas.views import CitaViewSet
 from atenciones.views import AtencionViewSet
 from recetas.views import RecetaViewSet
+from usuarios.views import UsuarioViewSet
 
 router = DefaultRouter()
 
@@ -22,6 +23,7 @@ router.register(r'especialidades', EspecialidadViewSet)
 router.register(r'citas', CitaViewSet)
 router.register(r'atenciones', AtencionViewSet)
 router.register(r'recetas', RecetaViewSet)
+router.register(r'usuarios', UsuarioViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
