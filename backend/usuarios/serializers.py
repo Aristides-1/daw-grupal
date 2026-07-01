@@ -4,4 +4,17 @@ from .models import Usuario
 class UsuarioSerializer(serializers.ModelSerializer):
     class Meta:
         model = Usuario
-        fields = '__all__'
+        fields = [
+            "id",
+            "username",
+            "email",
+            "is_active",
+            "rol"
+        ]
+        extra_kwargs = {
+            "password": {"write_only": True}
+        }
+
+    def create(self, validated_data):
+        user = Usuario.objects.create_user(**validated_data)
+        return user
