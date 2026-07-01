@@ -14,4 +14,5 @@ echo "Aplicando migraciones..."
 python manage.py migrate
 
 echo "Iniciando Django..."
-python manage.py runserver 0.0.0.0:8000
+
+exec python manage.py runserver 0.0.0.0:8000
