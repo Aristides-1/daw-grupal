@@ -10,7 +10,7 @@ class EsAdmin(BasePermission):
             request.user.is_superuser
         )
     
-class IsVeterinario(BasePermission):
+class EsVeterinario(BasePermission):
     def has_permission(self, request, view):
         return (
             request.user and
@@ -20,4 +20,8 @@ class IsVeterinario(BasePermission):
 
 class EsCliente(BasePermission):
     def has_permission(self, request, view):
-        return request.user.is_authenticated and request.user.rol.nombre == "cliente"
+        return (
+            request.user and
+            request.user.is_authenticated and
+            getattr(request.user, "rol", None) == "cliente"
+        )
