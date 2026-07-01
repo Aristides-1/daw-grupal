@@ -15,7 +15,6 @@ services:
   backend:
     build: ./backend
     container_name: vetcare_backend
-    command: /app/entrypoint.sh
     volumes:
       - ./backend:/app
     ports:
