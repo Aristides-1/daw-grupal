@@ -1,6 +1,12 @@
+from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated
+from .models import Mascota
+from .serializers import MascotaSerializer
+
+
 
 class MascotaViewSet(viewsets.ModelViewSet):
     queryset = Mascota.objects.all()
     serializer_class = MascotaSerializer
-    permission_classes = [IsAuthenticated]
+    def get_permissions(self):
+        return [IsAuthenticated()]

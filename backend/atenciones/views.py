@@ -1,4 +1,5 @@
 from rest_framework import viewsets
+from rest_framework.permissions import IsAuthenticated
 from .models import Atencion
 from .serializers import AtencionSerializer
 from usuarios.permissions import IsVeterinario

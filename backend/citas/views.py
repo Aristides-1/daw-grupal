@@ -1,8 +1,9 @@
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated
-from usuarios.permissions import IsAdminsAdmin, IsVeterinario, IsCliente
+from usuarios.permissions import IsAdmin, IsVeterinario, IsCliente, IsAdminOVeterinario
 from .models import Cita
 from .serializers import CitaSerializer
+
 
 class CitaViewSet(viewsets.ModelViewSet):
     queryset = Cita.objects.all()
@@ -10,12 +11,12 @@ class CitaViewSet(viewsets.ModelViewSet):
 
     def get_permissions(self):
         if self.action == "create":
-            return [IsCliente()]   # cliente SOLO solicita
+            return [IsCliente()] # solo  clientes pueden crear citas
 
         if self.action in ["update", "partial_update"]:
-            return [IsVeterinario() | IsAdmin()]  # control médico
+            return [IsAdminOVeterinario()] # solo admin o veterinario pueden actualizar citas
 
         if self.action == "destroy":
-            return [IsAdmin()]  # solo admin elimina
+            return [IsAdmin()] #solo admin elimina
 
         return [IsAuthenticated()]

@@ -2,7 +2,6 @@ from rest_framework import viewsets
 from .models import Veterinario, Especialidad
 from .serializers import VeterinarioSerializer, EspecialidadSerializer
 from usuarios.permissions import IsAdmin
-from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
 class VeterinarioViewSet(viewsets.ModelViewSet):
     queryset = Veterinario.objects.all()
