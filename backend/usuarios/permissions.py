@@ -13,7 +13,8 @@ class IsVeterinario(BasePermission):
     def has_permission(self, request, view):
         return (
             request.user.is_authenticated and
-            getattr(request.user, "rol", None) == "veterinario"
+            request.user.rol and
+            request.user.rol.nombre == "veterinario"
         )
 
 
@@ -21,15 +22,15 @@ class IsCliente(BasePermission):
     def has_permission(self, request, view):
         return (
             request.user.is_authenticated and
-            getattr(request.user, "rol", None) == "cliente"
+            request.user.rol and
+            request.user.rol.nombre == "cliente"
         )
-
 
 class IsAdminOVeterinario(BasePermission):
     def has_permission(self, request, view):
         return (
             request.user.is_authenticated and (
                 request.user.is_superuser or
-                getattr(request.user, "rol", None) == "veterinario"
+                (request.user.rol and request.user.rol.nombre == "veterinario")
             )
         )
