@@ -12,3 +12,15 @@ class CitaSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError()
 
         return value
+        
+    def validate(self, data):
+        veterinario = data.get('veterinario')
+        fecha = data.get('fecha')
+        hora = data.get('hora')
+
+        query = Cita.objects.filter(veterinario=veterinario, fecha=fecha, hora=hora)
+        if self.instance:
+            query = query.exclude(pk=self.instance.pk)
+        if query.exists():
+            raise serializers.ValidationError("El veterinario ya tiene una cita programada en ese horario.")
+        return data
