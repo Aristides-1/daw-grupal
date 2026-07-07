@@ -16,8 +16,7 @@ class ClienteSerializer(serializers.ModelSerializer):
 
             return value
 
-    #aseguramos que se ingrese un nombre no vacio
-    def validate_nombres(self, value):
+    #aseguramos que se ingrese un nombre, un apellido y tambien un telefono, que no sean vacios y numerico
 
         if not value.strip():
             raise serializers.ValidationError(
@@ -25,7 +24,7 @@ class ClienteSerializer(serializers.ModelSerializer):
             )
 
         return value
-        
+
     def validate_apellidos(self, value):
 
         if not value.strip():
@@ -33,4 +32,11 @@ class ClienteSerializer(serializers.ModelSerializer):
                 "Los apellidos son obligatorios."
             )
 
+        return value
+
+    def validate_telefono(self, value):
+        if not value.isdigit():
+            raise serializers.ValidationError(
+                "El teléfono debe contener solo números."
+            )
         return value
