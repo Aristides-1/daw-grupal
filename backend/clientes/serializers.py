@@ -25,3 +25,12 @@ class ClienteSerializer(serializers.ModelSerializer):
             )
 
         return value
+        
+    def validate_apellidos(self, value):
+
+        if not value.strip():
+            raise serializers.ValidationError(
+                "Los apellidos son obligatorios."
+            )
+
+        return value
