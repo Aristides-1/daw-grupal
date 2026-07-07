@@ -14,10 +14,18 @@ class MascotaSerializer(serializers.ModelSerializer):
                 "La fecha de nacimiento no puede ser una fecha futura."
             )
         return value
-        
+
     def validate_peso(self, value):
         if value <= 0:
             raise serializers.ValidationError(
                 "El peso debe ser un valor mayor a 0."
             )
+        return value
+        
+    def validate_nombre(self, value):
+        if not value.strip():
+            raise serializers.ValidationError(
+                "El nombre de la mascota es obligatorio."
+            )
+
         return value
