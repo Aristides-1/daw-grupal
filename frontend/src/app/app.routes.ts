@@ -11,6 +11,8 @@ import { VeterinarioForm } from './features/veterinarios/veterinario-form/veteri
 import { VeterinarioList } from './features/veterinarios/veterinario-list/veterinario-list';
 import { MascotaForm } from './features/mascotas/mascota-form/mascota-form';
 import { MascotaList } from './features/mascotas/mascota-list/mascota-list';
+import { CitaForm } from './features/citas/cita-form/cita-form';
+import { CitaList } from './features/citas/cita-list/cita-list';
 
 export const routes: Routes = [
   {
@@ -85,6 +87,21 @@ export const routes: Routes = [
   {
     path: 'mascotas/:id/editar',
     component: MascotaForm,
+    canActivate: [authGuard],
+  },
+  {
+    path: 'citas',
+    component: CitaList,
+    canActivate: [authGuard],
+  },
+  {
+    path: 'citas/nueva',
+    component: CitaForm,
+    canActivate: [authGuard],
+  },
+  {
+    path: 'citas/:id/editar',
+    component: CitaForm,
     canActivate: [authGuard],
   },
   {
