@@ -101,6 +101,14 @@
 
                   <td class="text-end">
                     <div class="btn-group btn-group-sm">
+                      <button
+                        type="button"
+                        class="btn btn-outline-secondary"
+                        (click)="descargarPdf(receta)"
+                        >
+                        <i class="bi bi-file-earmark-pdf"></i>
+                        PDF
+                      </button>
                       <a
                         [routerLink]="[
                           '/recetas',

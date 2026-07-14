@@ -179,4 +179,28 @@ export class RecetaList implements OnInit {
       },
     });
   }
+
+  descargarPdf(receta: Receta): void {
+    this.errorMessage = '';
+
+    this.recetasService.descargarPdf(receta.id).subscribe({
+      next: (archivo: Blob) => {
+        const url = URL.createObjectURL(archivo);
+        const enlace = document.createElement('a');
+
+        enlace.href = url;
+        enlace.download = `receta-vetcare-${receta.id}.pdf`;
+
+        document.body.appendChild(enlace);
+        enlace.click();
+        enlace.remove();
+
+        URL.revokeObjectURL(url);
+      },
+      error: () => {
+        this.errorMessage =
+          'No fue posible descargar el PDF de la receta.';
+      },
+    });
+  }
 }
