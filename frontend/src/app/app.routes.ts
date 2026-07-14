@@ -15,6 +15,8 @@ import { CitaForm } from './features/citas/cita-form/cita-form';
 import { CitaList } from './features/citas/cita-list/cita-list';
 import { AtencionForm } from './features/atenciones/atencion-form/atencion-form';
 import { AtencionList } from './features/atenciones/atencion-list/atencion-list';
+import { RecetaForm } from './features/recetas/receta-form/receta-form';
+import { RecetaList } from './features/recetas/receta-list/receta-list';
 
 export const routes: Routes = [
   {
@@ -119,6 +121,21 @@ export const routes: Routes = [
   {
     path: 'atenciones/:id/editar',
     component: AtencionForm,
+    canActivate: [authGuard],
+  },
+  {
+    path: 'recetas',
+    component: RecetaList,
+    canActivate: [authGuard],
+  },
+  {
+    path: 'recetas/nueva',
+    component: RecetaForm,
+    canActivate: [authGuard],
+  },
+  {
+    path: 'recetas/:id/editar',
+    component: RecetaForm,
     canActivate: [authGuard],
   },
   {
