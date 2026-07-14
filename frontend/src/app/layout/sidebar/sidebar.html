@@ -1,0 +1,87 @@
+<aside class="sidebar">
+  <div class="sidebar-brand">
+    <div class="brand-icon">
+      <i class="bi bi-heart-pulse"></i>
+    </div>
+
+    <div>
+      <h1>VetCare</h1>
+      <span>Gestión veterinaria</span>
+    </div>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a
+      routerLink="/dashboard"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
+      <i class="bi bi-grid"></i>
+      Dashboard
+    </a>
+
+    <div class="nav-section">
+      Gestión administrativa
+    </div>
+
+    <a
+      routerLink="/clientes"
+      routerLinkActive="active"
+    >
+      <i class="bi bi-people"></i>
+      Clientes
+    </a>
+
+    <a
+      routerLink="/mascotas"
+      routerLinkActive="active"
+    >
+      <i class="bi bi-heart"></i>
+      Mascotas
+    </a>
+
+    <a
+      routerLink="/especialidades"
+      routerLinkActive="active"
+    >
+      <i class="bi bi-bookmark-star"></i>
+      Especialidades
+    </a>
+
+    <a
+      routerLink="/veterinarios"
+      routerLinkActive="active"
+    >
+      <i class="bi bi-person-badge"></i>
+      Veterinarios
+    </a>
+
+    <div class="nav-section">
+      Gestión clínica
+    </div>
+
+    <a
+      routerLink="/citas"
+      routerLinkActive="active"
+    >
+      <i class="bi bi-calendar-check"></i>
+      Citas
+    </a>
+
+    <a
+      routerLink="/atenciones"
+      routerLinkActive="active"
+    >
+      <i class="bi bi-clipboard2-pulse"></i>
+      Atenciones
+    </a>
+
+    <a
+      routerLink="/recetas"
+      routerLinkActive="active"
+    >
+      <i class="bi bi-file-earmark-medical"></i>
+      Recetas
+    </a>
+  </nav>
+</aside>

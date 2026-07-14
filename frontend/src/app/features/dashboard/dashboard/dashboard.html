@@ -1,0 +1,171 @@
+<div class="dashboard-header mb-4">
+  <div>
+    <h1 class="h3 mb-1">
+      Dashboard
+    </h1>
+
+    <p class="text-muted mb-0">
+      Resumen general de la clínica veterinaria
+    </p>
+  </div>
+</div>
+
+@if (errorMessage) {
+  <div class="alert alert-warning">
+    {{ errorMessage }}
+  </div>
+}
+
+@if (isLoading) {
+  <div class="text-center py-5">
+    <div class="spinner-border text-primary"></div>
+  </div>
+} @else {
+  <div class="row g-4">
+    <div class="col-sm-6 col-xl-4">
+      <a
+        routerLink="/clientes"
+        class="dashboard-card"
+      >
+        <div class="card-icon">
+          <i class="bi bi-people"></i>
+        </div>
+
+        <div>
+          <span>Clientes</span>
+          <strong>{{ totalClientes }}</strong>
+        </div>
+      </a>
+    </div>
+
+    <div class="col-sm-6 col-xl-4">
+      <a
+        routerLink="/mascotas"
+        class="dashboard-card"
+      >
+        <div class="card-icon">
+          <i class="bi bi-heart"></i>
+        </div>
+
+        <div>
+          <span>Mascotas</span>
+          <strong>{{ totalMascotas }}</strong>
+        </div>
+      </a>
+    </div>
+
+    <div class="col-sm-6 col-xl-4">
+      <a
+        routerLink="/veterinarios"
+        class="dashboard-card"
+      >
+        <div class="card-icon">
+          <i class="bi bi-person-badge"></i>
+        </div>
+
+        <div>
+          <span>Veterinarios</span>
+          <strong>{{ totalVeterinarios }}</strong>
+        </div>
+      </a>
+    </div>
+
+    <div class="col-sm-6 col-xl-4">
+      <a
+        routerLink="/citas"
+        class="dashboard-card"
+      >
+        <div class="card-icon">
+          <i class="bi bi-calendar-check"></i>
+        </div>
+
+        <div>
+          <span>Citas</span>
+          <strong>{{ totalCitas }}</strong>
+        </div>
+      </a>
+    </div>
+
+    <div class="col-sm-6 col-xl-4">
+      <a
+        routerLink="/atenciones"
+        class="dashboard-card"
+      >
+        <div class="card-icon">
+          <i class="bi bi-clipboard2-pulse"></i>
+        </div>
+
+        <div>
+          <span>Atenciones</span>
+          <strong>{{ totalAtenciones }}</strong>
+        </div>
+      </a>
+    </div>
+
+    <div class="col-sm-6 col-xl-4">
+      <a
+        routerLink="/recetas"
+        class="dashboard-card"
+      >
+        <div class="card-icon">
+          <i class="bi bi-file-earmark-medical"></i>
+        </div>
+
+        <div>
+          <span>Recetas</span>
+          <strong>{{ totalRecetas }}</strong>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <div class="card border-0 shadow-sm mt-4">
+    <div class="card-body">
+      <h2 class="h5 mb-3">
+        Acciones rápidas
+      </h2>
+
+      <div class="d-flex flex-wrap gap-2">
+        <a
+          routerLink="/clientes/nuevo"
+          class="btn btn-outline-primary"
+        >
+          <i class="bi bi-person-plus"></i>
+          Nuevo cliente
+        </a>
+
+        <a
+          routerLink="/mascotas/nueva"
+          class="btn btn-outline-primary"
+        >
+          <i class="bi bi-heart"></i>
+          Nueva mascota
+        </a>
+
+        <a
+          routerLink="/citas/nueva"
+          class="btn btn-outline-primary"
+        >
+          <i class="bi bi-calendar-plus"></i>
+          Nueva cita
+        </a>
+
+        <a
+          routerLink="/atenciones/nueva"
+          class="btn btn-outline-primary"
+        >
+          <i class="bi bi-clipboard-plus"></i>
+          Nueva atención
+        </a>
+
+        <a
+          routerLink="/recetas/nueva"
+          class="btn btn-outline-primary"
+        >
+          <i class="bi bi-file-earmark-plus"></i>
+          Nueva receta
+        </a>
+      </div>
+    </div>
+  </div>
+}

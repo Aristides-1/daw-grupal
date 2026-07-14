@@ -1,0 +1,40 @@
+services:
+  db:
+    image: postgres:16
+    container_name: vetcare_db
+    restart: always
+    environment:
+      POSTGRES_DB: vetcare_db
+      POSTGRES_USER: vetcare_user
+      POSTGRES_PASSWORD: vetcare_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  backend:
+    build: ./backend
+    container_name: vetcare_backend
+    volumes:
+      - ./backend:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    env_file:
+      - .env
+
+  frontend:
+    build: ./frontend
+    container_name: vetcare_frontend
+    command: npm start -- --host 0.0.0.0 --poll 1000
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    ports:
+      - "4200:4200"
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:

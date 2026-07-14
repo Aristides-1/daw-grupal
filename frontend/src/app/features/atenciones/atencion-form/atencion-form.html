@@ -1,0 +1,155 @@
+<div class="container py-4">
+  <h1 class="h3 mb-1">
+    {{
+      esEdicion
+        ? 'Editar atención'
+        : 'Nueva atención'
+    }}
+  </h1>
+
+  <p class="text-muted mb-4">
+    Registra el diagnóstico y tratamiento de la consulta.
+  </p>
+
+  @if (errorMessage) {
+    <div class="alert alert-danger">
+      {{ errorMessage }}
+    </div>
+  }
+
+  @if (isLoading) {
+    <div class="text-center py-5">
+      <div class="spinner-border text-primary"></div>
+    </div>
+  } @else {
+    <div class="card shadow-sm border-0">
+      <div class="card-body p-4">
+        <form
+          [formGroup]="formulario"
+          (ngSubmit)="guardar()"
+        >
+          <div class="row g-3">
+            <div class="col-12">
+              <label class="form-label">
+                Cita
+              </label>
+
+              <select
+                class="form-select"
+                formControlName="cita"
+                [class.is-invalid]="campoInvalido('cita')"
+              >
+                <option [ngValue]="0">
+                  Selecciona una cita
+                </option>
+
+                @for (
+                  cita of citas;
+                  track cita.id
+                ) {
+                  <option [ngValue]="cita.id">
+                    {{ descripcionCita(cita) }}
+                  </option>
+                }
+              </select>
+
+              <div class="invalid-feedback">
+                Selecciona una cita.
+              </div>
+            </div>
+
+            <div class="col-12">
+              <label class="form-label">
+                Motivo de consulta
+              </label>
+
+              <textarea
+                rows="3"
+                class="form-control"
+                formControlName="motivo"
+                [class.is-invalid]="campoInvalido('motivo')"
+              ></textarea>
+            </div>
+
+            <div class="col-12">
+              <label class="form-label">
+                Síntomas
+              </label>
+
+              <textarea
+                rows="3"
+                class="form-control"
+                formControlName="sintomas"
+              ></textarea>
+            </div>
+
+            <div class="col-12">
+              <label class="form-label">
+                Diagnóstico
+              </label>
+
+              <textarea
+                rows="3"
+                class="form-control"
+                formControlName="diagnostico"
+                [class.is-invalid]="campoInvalido('diagnostico')"
+              ></textarea>
+            </div>
+
+            <div class="col-12">
+              <label class="form-label">
+                Tratamiento
+              </label>
+
+              <textarea
+                rows="3"
+                class="form-control"
+                formControlName="tratamiento"
+                [class.is-invalid]="campoInvalido('tratamiento')"
+              ></textarea>
+            </div>
+
+            <div class="col-12">
+              <label class="form-label">
+                Observaciones
+              </label>
+
+              <textarea
+                rows="3"
+                class="form-control"
+                formControlName="observaciones"
+              ></textarea>
+            </div>
+          </div>
+
+          <div
+            class="d-flex justify-content-end gap-2 mt-4"
+          >
+            <a
+              routerLink="/atenciones"
+              class="btn btn-outline-secondary"
+            >
+              Cancelar
+            </a>
+
+            <button
+              type="submit"
+              class="btn btn-primary"
+              [disabled]="isSaving"
+            >
+              @if (isSaving) {
+                Guardando...
+              } @else {
+                {{
+                  esEdicion
+                    ? 'Actualizar'
+                    : 'Registrar'
+                }}
+              }
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  }
+</div>
