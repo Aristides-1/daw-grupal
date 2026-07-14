@@ -9,6 +9,8 @@ import { EspecialidadForm } from './features/especialidades/especialidad-form/es
 import { EspecialidadList } from './features/especialidades/especialidad-list/especialidad-list';
 import { VeterinarioForm } from './features/veterinarios/veterinario-form/veterinario-form';
 import { VeterinarioList } from './features/veterinarios/veterinario-list/veterinario-list';
+import { MascotaForm } from './features/mascotas/mascota-form/mascota-form';
+import { MascotaList } from './features/mascotas/mascota-list/mascota-list';
 
 export const routes: Routes = [
   {
@@ -69,6 +71,21 @@ export const routes: Routes = [
     path: '',
     pathMatch: 'full',
     redirectTo: 'dashboard',
+  },
+  {
+    path: 'mascotas',
+    component: MascotaList,
+    canActivate: [authGuard],
+  },
+  {
+    path: 'mascotas/nueva',
+    component: MascotaForm,
+    canActivate: [authGuard],
+  },
+  {
+    path: 'mascotas/:id/editar',
+    component: MascotaForm,
+    canActivate: [authGuard],
   },
   {
     path: '**',
