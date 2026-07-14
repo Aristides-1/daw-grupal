@@ -1,12 +1,20 @@
 from django.db import models
+
 from citas.models import Cita
+
 
 class Atencion(models.Model):
     motivo = models.TextField()
-    tratamiento = models.TextField(blank=False)
+    sintomas = models.TextField(blank=True)
+    diagnostico = models.TextField()
+    tratamiento = models.TextField()
     observaciones = models.TextField(blank=True)
 
-    cita = models.OneToOneField(Cita, on_delete=models.CASCADE)
+    cita = models.OneToOneField(
+        Cita,
+        on_delete=models.CASCADE,
+        related_name="atencion",
+    )
 
     def __str__(self):
-        return f"Atención {self.id}"
+        return f"Atención {self.id} - Cita {self.cita_id}"

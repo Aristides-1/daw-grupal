@@ -1,0 +1,31 @@
+<nav class="navbar navbar-expand bg-white border-bottom px-3">
+  <div class="container-fluid px-0">
+    <a
+      routerLink="/dashboard"
+      class="navbar-brand d-lg-none fw-bold text-primary"
+    >
+      VetCare
+    </a>
+
+    <div class="ms-auto d-flex align-items-center gap-3">
+      <div class="text-end d-none d-sm-block">
+        <div class="fw-semibold">
+            {{ nombreCompleto }}
+        </div>
+
+        <div class="small text-muted">
+            {{ nombreRol }} · Sesión activa
+        </div>
+      </div>
+
+      <button
+        type="button"
+        class="btn btn-outline-danger btn-sm"
+        (click)="logout()"
+      >
+        <i class="bi bi-box-arrow-right"></i>
+        Cerrar sesión
+      </button>
+    </div>
+  </div>
+</nav>

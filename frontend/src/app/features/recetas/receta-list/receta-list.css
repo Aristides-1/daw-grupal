@@ -1,0 +1,8 @@
+table th {
+  white-space: nowrap;
+}
+
+table td {
+  vertical-align: middle;
+  max-width: 320px;
+}

@@ -1,0 +1,193 @@
+<div class="container py-4">
+  <h1 class="h3 mb-1">
+    {{
+      esEdicion
+        ? 'Editar cita'
+        : 'Nueva cita'
+    }}
+  </h1>
+
+  <p class="text-muted mb-4">
+    Programa la atención de una mascota.
+  </p>
+
+  @if (errorMessage) {
+    <div class="alert alert-danger">
+      {{ errorMessage }}
+    </div>
+  }
+
+  @if (isLoading) {
+    <div class="text-center py-5">
+      <div
+        class="spinner-border text-primary"
+      ></div>
+    </div>
+  } @else {
+    <div class="card shadow-sm border-0">
+      <div class="card-body p-4">
+        <form
+          [formGroup]="formulario"
+          (ngSubmit)="guardar()"
+        >
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label">
+                Mascota
+              </label>
+
+              <select
+                class="form-select"
+                formControlName="mascota"
+                [class.is-invalid]="
+                  campoInvalido('mascota')
+                "
+              >
+                <option [ngValue]="0">
+                  Selecciona una mascota
+                </option>
+
+                @for (
+                  mascota of mascotas;
+                  track mascota.id
+                ) {
+                  <option
+                    [ngValue]="mascota.id"
+                  >
+                    {{ mascota.nombre }}
+                    — {{ mascota.especie }}
+                  </option>
+                }
+              </select>
+
+              <div class="invalid-feedback">
+                Selecciona una mascota.
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">
+                Veterinario
+              </label>
+
+              <select
+                class="form-select"
+                formControlName="veterinario"
+                [class.is-invalid]="
+                  campoInvalido(
+                    'veterinario'
+                  )
+                "
+              >
+                <option [ngValue]="0">
+                  Selecciona un veterinario
+                </option>
+
+                @for (
+                  veterinario of veterinarios;
+                  track veterinario.id
+                ) {
+                  <option
+                    [ngValue]="veterinario.id"
+                  >
+                    {{ veterinario.nombres }}
+                    {{ veterinario.apellidos }}
+                  </option>
+                }
+              </select>
+
+              <div class="invalid-feedback">
+                Selecciona un veterinario.
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <label class="form-label">
+                Fecha
+              </label>
+
+              <input
+                type="date"
+                class="form-control"
+                formControlName="fecha"
+                [min]="fechaMinima"
+                [class.is-invalid]="
+                  campoInvalido('fecha')
+                "
+              />
+            </div>
+
+            <div class="col-md-4">
+              <label class="form-label">
+                Hora
+              </label>
+
+              <input
+                type="time"
+                class="form-control"
+                formControlName="hora"
+                [class.is-invalid]="
+                  campoInvalido('hora')
+                "
+              />
+            </div>
+
+            <div class="col-md-4">
+              <label class="form-label">
+                Estado
+              </label>
+
+              <select
+                class="form-select"
+                formControlName="estado"
+              >
+                <option value="pendiente">
+                  Pendiente
+                </option>
+
+                <option value="confirmada">
+                  Confirmada
+                </option>
+
+                <option value="atendida">
+                  Atendida
+                </option>
+
+                <option value="cancelada">
+                  Cancelada
+                </option>
+              </select>
+            </div>
+          </div>
+
+          <div
+            class="d-flex justify-content-end gap-2 mt-4"
+          >
+            <a
+              routerLink="/citas"
+              class="btn btn-outline-secondary"
+            >
+              Cancelar
+            </a>
+
+            <button
+              type="submit"
+              class="btn btn-primary"
+              [disabled]="isSaving"
+            >
+              @if (isSaving) {
+                Guardando...
+              } @else {
+                {{
+                  esEdicion
+                    ? 'Actualizar'
+                    : 'Registrar'
+                }}
+              }
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  }
+</div>

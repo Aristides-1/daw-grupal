@@ -1,5 +1,17 @@
 from django.contrib import admin
-from .models import Rol, Usuario
+from django.contrib.auth.admin import UserAdmin
+from .models import Usuario
 
-admin.site.register(Rol)
-admin.site.register(Usuario)
+
+# se registra el modelo Usuario en el panel de administración
+@admin.register(Usuario)
+#se personaliza la interfaz de administración del modelo Usuario
+class UsuarioAdmin(UserAdmin):
+    
+    fieldsets = UserAdmin.fieldsets + (
+        ("Rol", {"fields": ("rol",)}),
+    )
+
+    add_fieldsets = UserAdmin.add_fieldsets + (
+        ("Rol", {"fields": ("rol",)}),
+    )

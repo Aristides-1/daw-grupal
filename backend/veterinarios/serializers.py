@@ -11,3 +11,10 @@ class VeterinarioSerializer(serializers.ModelSerializer):
     class Meta:
         model = Veterinario
         fields = '__all__'
+        
+    def validate_telefono(self, value):
+        if not value.isdigit():
+            raise serializers.ValidationError(
+                "El teléfono debe contener solo números."
+            )
+        return value

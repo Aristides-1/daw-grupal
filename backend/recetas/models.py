@@ -8,4 +8,4 @@ class Receta(models.Model):
     atencion = models.ForeignKey(Atencion, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.medicamento
+        return self.medicamentos
