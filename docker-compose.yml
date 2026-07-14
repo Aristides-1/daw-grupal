@@ -27,7 +27,7 @@ services:
   frontend:
     build: ./frontend
     container_name: vetcare_frontend
-    command: npm start -- --host 0.0.0.0
+    command: npm start -- --host 0.0.0.0 --poll 1000
     volumes:
       - ./frontend:/app
       - /app/node_modules
