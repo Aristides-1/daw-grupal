@@ -1,1 +1,87 @@
-<p>login works!</p>
+<div class="login-page">
+  <div class="card login-card shadow">
+    <div class="card-body p-4">
+      <div class="text-center mb-4">
+        <h1 class="h3 mb-1">VetCare</h1>
+        <p class="text-muted mb-0">
+          Sistema de gestión veterinaria
+        </p>
+      </div>
+
+      <form
+        [formGroup]="loginForm"
+        (ngSubmit)="submit()"
+      >
+        <div class="mb-3">
+          <label
+            for="username"
+            class="form-label"
+          >
+            Usuario
+          </label>
+
+          <input
+            id="username"
+            type="text"
+            class="form-control"
+            formControlName="username"
+            autocomplete="username"
+          />
+
+          @if (
+            loginForm.controls.username.touched &&
+            loginForm.controls.username.invalid
+          ) {
+            <div class="text-danger small mt-1">
+              El usuario es obligatorio.
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label
+            for="password"
+            class="form-label"
+          >
+            Contraseña
+          </label>
+
+          <input
+            id="password"
+            type="password"
+            class="form-control"
+            formControlName="password"
+            autocomplete="current-password"
+          />
+
+          @if (
+            loginForm.controls.password.touched &&
+            loginForm.controls.password.invalid
+          ) {
+            <div class="text-danger small mt-1">
+              La contraseña es obligatoria.
+            </div>
+          }
+        </div>
+
+        @if (errorMessage) {
+          <div class="alert alert-danger">
+            {{ errorMessage }}
+          </div>
+        }
+
+        <button
+          type="submit"
+          class="btn btn-primary w-100"
+          [disabled]="isLoading"
+        >
+          @if (isLoading) {
+            Ingresando...
+          } @else {
+            Iniciar sesión
+          }
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
