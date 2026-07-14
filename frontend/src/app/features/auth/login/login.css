@@ -1,19 +1,31 @@
 .login-page {
+  position: relative;
   min-height: 100vh;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   padding: 1rem;
-  background: linear-gradient(
-    135deg,
-    #e9f2ff 0%,
-    #f7f9fc 100%
-  );
+
+  background-image:
+    linear-gradient(
+      rgba(0, 0, 0, 0.45),
+      rgba(0, 0, 0, 0.45)
+    ),
+    url('/images/login-bg.jpg');
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .login-card {
   width: 100%;
   max-width: 420px;
+
   border: 0;
   border-radius: 1rem;
+
+  background-color: rgba(255, 255, 255, 0.96);
 }
