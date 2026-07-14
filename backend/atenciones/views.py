@@ -1,7 +1,10 @@
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated
 
-from usuarios.permissions import IsAdmin, IsAdminOVeterinario
+from usuarios.permissions import (
+    IsAdmin,
+    IsAdminOVeterinario,
+)
 
 from .models import Atencion
 from .serializers import AtencionSerializer
@@ -25,10 +28,14 @@ class AtencionViewSet(viewsets.ModelViewSet):
             "update",
             "partial_update",
         ]:
-            permission_classes = [IsAdminOVeterinario]
+            permission_classes = [
+                IsAdminOVeterinario
+            ]
 
         else:
-            permission_classes = [IsAuthenticated]
+            permission_classes = [
+                IsAuthenticated
+            ]
 
         return [
             permission()

@@ -1,7 +1,12 @@
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated
 
-from usuarios.permissions import IsAdmin, IsAdminOVeterinario
+from usuarios.permissions import (
+    IsAdmin,
+    IsAdminORecepcionista,
+    IsAdminOVeterinario,
+)
+
 from .models import Cita
 from .serializers import CitaSerializer
 
@@ -18,15 +23,23 @@ class CitaViewSet(viewsets.ModelViewSet):
         if self.action == "destroy":
             permission_classes = [IsAdmin]
 
+        elif self.action == "create":
+            permission_classes = [
+                IsAdminORecepcionista
+            ]
+
         elif self.action in [
-            "create",
             "update",
             "partial_update",
         ]:
-            permission_classes = [IsAdminOVeterinario]
+            permission_classes = [
+                IsAdminOVeterinario
+            ]
 
         else:
-            permission_classes = [IsAuthenticated]
+            permission_classes = [
+                IsAuthenticated
+            ]
 
         return [
             permission()
