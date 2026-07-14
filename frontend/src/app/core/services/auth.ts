@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, tap } from 'rxjs';
+import { UsuarioActual } from '../models/usuario-actual.model';
 
 import {
   LoginRequest,
@@ -17,6 +18,7 @@ export class Auth {
 
   private readonly accessTokenKey = 'vetcare_access_token';
   private readonly refreshTokenKey = 'vetcare_refresh_token';
+  private usuarioActual: UsuarioActual | null = null;
 
   constructor(private readonly http: HttpClient) {}
 
@@ -39,6 +41,7 @@ export class Auth {
   logout(): void {
     localStorage.removeItem(this.accessTokenKey);
     localStorage.removeItem(this.refreshTokenKey);
+    this.usuarioActual = null;
   }
 
   getAccessToken(): string | null {
@@ -56,5 +59,21 @@ export class Auth {
   private saveTokens(tokens: TokenResponse): void {
     localStorage.setItem(this.accessTokenKey, tokens.access);
     localStorage.setItem(this.refreshTokenKey, tokens.refresh);
+  }
+
+  obtenerUsuarioActual(): Observable<UsuarioActual> {
+    return this.http
+      .get<UsuarioActual>(
+        'http://localhost:8000/api/usuarios/me/',
+      )
+      .pipe(
+        tap((usuario) => {
+          this.usuarioActual = usuario;
+        }),
+      );
+  }
+
+  getUsuarioActual(): UsuarioActual | null {
+    return this.usuarioActual;
   }
 }

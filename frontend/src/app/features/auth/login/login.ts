@@ -50,7 +50,16 @@ export class Login {
       .login(this.loginForm.getRawValue())
       .subscribe({
         next: () => {
-          this.router.navigate(['/dashboard']);
+          this.authService.obtenerUsuarioActual().subscribe({
+            next: () => {
+              this.router.navigate(['/dashboard']);
+            },
+            error: () => {
+              this.errorMessage =
+                'No fue posible cargar el perfil del usuario.';
+              this.isLoading = false;
+            },
+          });
         },
         error: (error) => {
           this.isLoading = false;
