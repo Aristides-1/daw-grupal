@@ -13,6 +13,8 @@ import { MascotaForm } from './features/mascotas/mascota-form/mascota-form';
 import { MascotaList } from './features/mascotas/mascota-list/mascota-list';
 import { CitaForm } from './features/citas/cita-form/cita-form';
 import { CitaList } from './features/citas/cita-list/cita-list';
+import { AtencionForm } from './features/atenciones/atencion-form/atencion-form';
+import { AtencionList } from './features/atenciones/atencion-list/atencion-list';
 
 export const routes: Routes = [
   {
@@ -102,6 +104,21 @@ export const routes: Routes = [
   {
     path: 'citas/:id/editar',
     component: CitaForm,
+    canActivate: [authGuard],
+  },
+  {
+    path: 'atenciones',
+    component: AtencionList,
+    canActivate: [authGuard],
+  },
+  {
+    path: 'atenciones/nueva',
+    component: AtencionForm,
+    canActivate: [authGuard],
+  },
+  {
+    path: 'atenciones/:id/editar',
+    component: AtencionForm,
     canActivate: [authGuard],
   },
   {
