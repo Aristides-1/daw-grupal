@@ -19,7 +19,7 @@ interface PaginatedResponse<T> {
 })
 export class Atenciones {
   private readonly apiUrl =
-    'http://localhost:8000/api/atenciones/';
+    'https://daw-grupal.onrender.com/api/atenciones/';
 
   constructor(
     private readonly http: HttpClient,

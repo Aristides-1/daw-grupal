@@ -19,7 +19,7 @@ interface PaginatedResponse<T> {
 })
 export class Especialidades {
   private readonly apiUrl =
-    'http://localhost:8000/api/especialidades/';
+    'https://daw-grupal.onrender.com/api/especialidades/';
 
   constructor(private readonly http: HttpClient) {}
 

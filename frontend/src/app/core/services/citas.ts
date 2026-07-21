@@ -19,7 +19,7 @@ interface PaginatedResponse<T> {
 })
 export class Citas {
   private readonly apiUrl =
-    'http://localhost:8000/api/citas/';
+    'https://daw-grupal.onrender.com/api/citas/';
 
   constructor(
     private readonly http: HttpClient,

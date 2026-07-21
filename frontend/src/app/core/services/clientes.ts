@@ -12,7 +12,7 @@ import {
   providedIn: 'root',
 })
 export class Clientes {
-  private readonly apiUrl = 'http://localhost:8000/api/clientes/';
+  private readonly apiUrl = 'https://daw-grupal.onrender.com/api/clientes/';
 
   constructor(private readonly http: HttpClient) {}
 

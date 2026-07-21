@@ -19,7 +19,7 @@ interface PaginatedResponse<T> {
 })
 export class Veterinarios {
   private readonly apiUrl =
-    'http://localhost:8000/api/veterinarios/';
+    'https://daw-grupal.onrender.com/api/veterinarios/';
 
   constructor(private readonly http: HttpClient) {}
 

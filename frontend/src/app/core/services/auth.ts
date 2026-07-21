@@ -12,9 +12,9 @@ import {
   providedIn: 'root',
 })
 export class Auth {
-  private readonly tokenUrl = 'http://localhost:8000/api/token/';
+  private readonly tokenUrl = 'https://daw-grupal.onrender.com/api/token/';
   private readonly refreshUrl =
-    'http://localhost:8000/api/token/refresh/';
+    'https://daw-grupal.onrender.com/api/token/refresh/';
 
   private readonly accessTokenKey = 'vetcare_access_token';
   private readonly refreshTokenKey = 'vetcare_refresh_token';
@@ -64,7 +64,7 @@ export class Auth {
   obtenerUsuarioActual(): Observable<UsuarioActual> {
     return this.http
       .get<UsuarioActual>(
-        'http://localhost:8000/api/usuarios/me/',
+        'https://daw-grupal.onrender.com/api/usuarios/me/',
       )
       .pipe(
         tap((usuario) => {
