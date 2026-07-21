@@ -22,13 +22,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-vh#b_1p-%btou*8(^^k$)md+72)7@r8%kx*&1w$snstw#^6_n4'
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'django-insecure-vh#b_1p-%btou*8(^^k$)md+72)7@r8%kx*&1w$snstw#^6_n4')
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv('DJANGO_DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '*']
 
+ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
 
 # Application definition
 
@@ -52,7 +53,7 @@ INSTALLED_APPS = [
 ]
 AUTH_USER_MODEL = 'usuarios.Usuario'
 
-CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOWED_ORIGINS = os.getenv('CORS_ALLOWED_ORIGINS', 'http://localhost:4200').split(',')
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
