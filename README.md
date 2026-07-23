@@ -4,7 +4,7 @@
 > Universidad Nacional de San Agustín de Arequipa
 
 ---
-
+> Pág. subida a la nube : https://vetcare-frontend-s186.onrender.com
 # Videos de presentación
 
 **Video demostrativo**  
@@ -21,7 +21,7 @@
 - Diego Aristides Cervantes Apaza
 - Basily Andree Castellanos Ampuero
 
-**Docente:** M.Sc. Carlo Jose Luis Corrales Delgado
+**Docente:** M.Sc. Carlo Jose Luis Corrales Delgado (Laboratorio) y Richart Escobedo Quispe (Teoría)
 
 ---
 
