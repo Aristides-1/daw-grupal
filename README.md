@@ -4,7 +4,8 @@
 > Universidad Nacional de San Agustín de Arequipa
 
 ---
-> Pág. subida a la nube : https://vetcare-frontend-s186.onrender.com
+> Pág. subida a la nube : https://vetcare-frontend-s186.onrender.com    
+Usuario base: admin, 1234
 # Videos de presentación
 
 **Video demostrativo**  
